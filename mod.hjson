@@ -1,8 +1,8 @@
-displayName: "Template Mod"
-name: "template"
-author: "[#FBC02D[]]YourName[[]]"
-main: "example.TemplateMod"
-description: "A template for Mindustry modding. Repository is on github.com/liplum/MdtModTemplate."
+displayName: "Bottled Liquid"
+name: "bottled-liquid"
+author: "Programming by [#42a5f5[]]Liplum[[]] -- Textures by TheTenthBot#9749"
+main: "net.liplum.bl.BottledLiquidMod"
+description: "Selling drinks in Mindustry!"
 version: 1.0
-minGameVersion: 135
+minGameVersion: 126
 java: true
