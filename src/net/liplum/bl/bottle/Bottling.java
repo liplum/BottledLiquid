@@ -14,6 +14,7 @@ public class Bottling {
         for (Liquid liquid : Vars.content.liquids()) {
             if (!liquid.isHidden()) {
                 BottledLiquid bottled = new BottledLiquid(liquid);
+                bottled.composeIcon();
                 liquid2Bottled.put(liquid, bottled);
             }
         }
