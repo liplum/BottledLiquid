@@ -14,7 +14,7 @@ import net.liplum.bl.Var;
 import static java.lang.Math.max;
 
 public class CanningMachine extends Block {
-    public float canningReqTime = 30f;
+    public float canningReqTime = 120f;
 
     public CanningMachine(String name) {
         super(name);
@@ -52,6 +52,7 @@ public class CanningMachine extends Block {
         @Override
         public void updateTile() {
             Liquid canning = getCurrentCanningLiquid();
+            dump();
             if (canning != null) {
                 curCanningTime += edelta();
                 if (curCanningTime > canningReqTime) {
@@ -81,7 +82,6 @@ public class CanningMachine extends Block {
             BottledLiquid bottled = Bottling.get(liquid);
             if (bottled != null) {
                 items.add(bottled, 1);
-                dump(bottled);
                 liquids.remove(liquid, Var.liquidPerBottle);
                 curCanning = null;
             }
@@ -94,14 +94,22 @@ public class CanningMachine extends Block {
          */
         @Nullable
         public Liquid getCurrentCanningLiquid() {
-            if (curCanning != null) return curCanning;
+            if (curCanning != null && canCan(curCanning))
+                return curCanning;
             for (Liquid liquid : Vars.content.liquids()) {
-                if (liquids.get(liquid) >= Var.liquidPerBottle) {
+                if (canCan(liquid)) {
                     curCanning = liquid;
                     return liquid;
                 }
             }
             return null;
+        }
+
+        public boolean canCan(Liquid liquid) {
+            BottledLiquid bottled = Bottling.liquid2Bottled.get(liquid);
+            return bottled != null &&
+                    liquids.get(liquid) >= Var.liquidPerBottle &&
+                    items.get(bottled) < itemCapacity;
         }
 
         @Override
