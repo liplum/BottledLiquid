@@ -15,7 +15,7 @@ import net.liplum.bl.Var;
 import static java.lang.Math.max;
 
 public class BeverageMachine extends Block {
-    public float sellingReqTime = 120f;
+    public float sellingReqTime = 60f;
 
     public BeverageMachine(String name) {
         super(name);
@@ -81,6 +81,7 @@ public class BeverageMachine extends Block {
         public void sell(BottledLiquid drink) {
             Liquid liquid = drink.liquid;
             liquids.add(liquid, Var.liquidPerBottle);
+            items.remove(drink, 1);
             curSelling = null;
         }
 

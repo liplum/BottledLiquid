@@ -1,8 +1,13 @@
 displayName: "Bottled Liquid"
 name: "bottled-liquid"
-author: "Programming by [#42a5f5[]]Liplum[[]] -- Textures by TheTenthBot#9749"
+author: "[#42a5f5[]]Liplum[[]]"
 main: "net.liplum.bl.BottledLiquidMod"
-description: "Selling drinks in Mindustry!"
+description:
+'''
+Selling drinks in Mindustry! CHEERS!
+Programmer: [#42a5f5[]]Liplum[[]]
+Painter: TheTenthBot#9749 on Discord
+'''
 version: 1.0
 minGameVersion: 126
 java: true
