@@ -58,6 +58,7 @@ public class BeverageMachine extends Block {
         @Override
         public void updateTile() {
             BottledLiquid selling = getCurrentSellingDrink();
+            pollOutDrink();
             if (selling != null) {
                 curSellingTime += edelta();
                 if (curSellingTime > sellingReqTime) {
@@ -65,6 +66,11 @@ public class BeverageMachine extends Block {
                     sell(curSelling);
                 }
             }
+        }
+
+        public void pollOutDrink() {
+            Liquid current = liquids.current();
+            dumpLiquid(current);
         }
 
         /**
@@ -75,7 +81,6 @@ public class BeverageMachine extends Block {
         public void sell(BottledLiquid drink) {
             Liquid liquid = drink.liquid;
             liquids.add(liquid, Var.liquidPerBottle);
-            dumpLiquid(liquid);
             curSelling = null;
         }
 
@@ -86,9 +91,11 @@ public class BeverageMachine extends Block {
          */
         @Nullable
         public BottledLiquid getCurrentSellingDrink() {
-            if (curSelling != null) return curSelling;
+            if (curSelling != null && canSell(curSelling)) {
+                return curSelling;
+            }
             for (BottledLiquid drink : Bottling.liquid2Bottled.values()) {
-                if (items.get(drink) >= 1) {
+                if (canSell(drink)) {
                     curSelling = drink;
                     return drink;
                 }
@@ -96,9 +103,15 @@ public class BeverageMachine extends Block {
             return null;
         }
 
+        public boolean canSell(BottledLiquid bottle) {
+            return items.get(bottle) >= 1 &&
+                    liquids.get(bottle.liquid) < liquidCapacity;
+        }
+
         @Override
         public boolean acceptItem(Building source, Item item) {
-            return item instanceof BottledLiquid;
+            return item instanceof BottledLiquid &&
+                    items.get(item) < itemCapacity;
         }
 
         @Override

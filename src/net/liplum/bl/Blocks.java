@@ -19,6 +19,7 @@ public class Blocks {
             ));
             size = 2;
             itemCapacity = 20;
+            liquidCapacity = Var.liquidPerBottle * 10;
             consumes.power(3f);
         }};
         canningMachine = new CanningMachine("canning-machine") {{
@@ -29,6 +30,7 @@ public class Blocks {
             ));
             size = 2;
             itemCapacity = 20;
+            liquidCapacity = Var.liquidPerBottle * 10;
             consumes.power(3f);
         }};
     }

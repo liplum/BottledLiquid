@@ -94,14 +94,22 @@ public class CanningMachine extends Block {
          */
         @Nullable
         public Liquid getCurrentCanningLiquid() {
-            if (curCanning != null) return curCanning;
+            if (curCanning != null && canCan(curCanning))
+                return curCanning;
             for (Liquid liquid : Vars.content.liquids()) {
-                if (liquids.get(liquid) >= Var.liquidPerBottle) {
+                if (canCan(liquid)) {
                     curCanning = liquid;
                     return liquid;
                 }
             }
             return null;
+        }
+
+        public boolean canCan(Liquid liquid) {
+            BottledLiquid bottled = Bottling.liquid2Bottled.get(liquid);
+            return bottled != null &&
+                    liquids.get(liquid) >= Var.liquidPerBottle &&
+                    items.get(bottled) < itemCapacity;
         }
 
         @Override
