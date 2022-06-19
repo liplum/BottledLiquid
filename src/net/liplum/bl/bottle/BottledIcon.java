@@ -10,26 +10,24 @@ import net.liplum.bl.utils.PixmapH;
 import net.liplum.bl.utils.Res;
 
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class BottledIcon {
     private static final HashMap<String, Pixmap> templateName2Cache = new HashMap<>();
 
-    public static void genIconFor(TextureRegion[] icons, Liquid targetLiquid, String templateName) {
-        genIcon(templateName, targetLiquid.color, icons);
+    public static TextureRegion genIconFor(Liquid targetLiquid, String templateName) {
+        return genIcon(templateName, targetLiquid.color);
     }
 
-    public static void genIcon(String templateName, Color color, TextureRegion[] to) {
+    public static TextureRegion genIcon(String templateName, Color color) {
         Pixmap template = getTemplate(templateName);
-        TextureRegion tr = genIcon(template, color);
-        Arrays.fill(to, tr);
+        return genIcon(template, color);
     }
 
     public static Pixmap getTemplate(String templateName) {
         Pixmap template = templateName2Cache.get(templateName);
         if (template == null) {
-            InputStream originalStream = Res.getFromJar("/sprites/items/bottled-liquid-template.png");
+            InputStream originalStream = Res.getFromJar(templateName);
             template = new Pixmap(BytesH.readBytes(originalStream));
             templateName2Cache.put(templateName, template);
         }

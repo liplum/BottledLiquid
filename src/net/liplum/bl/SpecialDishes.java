@@ -12,7 +12,7 @@ public class SpecialDishes {
         m.put("betamindy-coffee", R.Icon.Cup);
     }
 
-    public static String mappingTemplate(Liquid liquid) {
+    public static String mappingContainer(Liquid liquid) {
         String templateName = liquidName2TemplateName.get(liquid.name);
         if (templateName == null) {
             return R.Icon.Bottle;
