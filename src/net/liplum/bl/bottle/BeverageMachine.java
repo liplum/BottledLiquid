@@ -80,7 +80,7 @@ public class BeverageMachine extends Block {
          */
         public void sell(BottledLiquid drink) {
             Liquid liquid = drink.liquid;
-            liquids.add(liquid, Var.liquidPerBottle);
+            handleLiquid(this, liquid, Var.liquidPerBottle);
             items.remove(drink, 1);
             curSelling = null;
         }
