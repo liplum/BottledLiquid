@@ -2,6 +2,7 @@ displayName: "Bottled Liquid"
 name: "bottled-liquid"
 author: "[#42a5f5[]]Liplum[[]]"
 main: "net.liplum.bl.BottledLiquidMod"
+subtitle: "CHEERS!"
 description:
 '''
 Selling drinks in Mindustry! CHEERS!

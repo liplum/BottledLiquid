@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static sun.swing.MenuItemLayoutHelper.max;
+import static java.lang.Math.max;
 
 public class BytesH {
     public static byte[] readBytes(InputStream stream) {
