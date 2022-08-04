@@ -9,6 +9,6 @@ Selling drinks in Mindustry! CHEERS!
 Programmer: [#42a5f5[]]Liplum[[]]
 Painter: TheTenthBot#9749 on Discord
 '''
-version: 2.0
-minGameVersion: 135
+version: "3.0"
+minGameVersion: 136
 java: true

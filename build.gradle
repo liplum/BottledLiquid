@@ -5,7 +5,7 @@ buildscript {
 }
 plugins {
     id 'java'
-    id "io.github.liplum.mgpp" version "1.0.3"
+    id "io.github.liplum.mgpp" version "1.1.10"
 }
 sourceSets {
     main {
@@ -25,14 +25,14 @@ repositories {
 }
 mindustry {
     dependency {
-        mindustry version: 'v135'
-        arc version: 'v135'
+        mindustry version: 'v136'
+        arc version: 'v136'
     }
     client {
-        official version: 'v135'
+        official version: 'v136'
     }
     server {
-        official version: 'v135'
+        official version: 'v136'
     }
 }
 dependencies {

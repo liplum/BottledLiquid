@@ -32,7 +32,7 @@ public class BeverageMachine extends Block {
     @Override
     public void setBars() {
         super.setBars();
-        bars.add("progress",
+        addBar("progress",
                 (BeverageBuild b) -> new Bar(
                         () -> (int) (b.getProgress() * 100) + "%",
                         () -> b.curSelling != null ? b.curSelling.color : Pal.gray,

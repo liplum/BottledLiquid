@@ -36,7 +36,7 @@ public class CanningMachine extends Block {
     @Override
     public void setBars() {
         super.setBars();
-        bars.add("progress",
+        addBar("progress",
                 (CanningBuild b) -> new Bar(
                         () -> (int) (b.getProgress() * 100) + "%",
                         () -> b.curCanning != null ? b.curCanning.color : Pal.gray,

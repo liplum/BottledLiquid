@@ -20,7 +20,8 @@ public class BottledLiquid extends Item {
         this.color = liquid.color.cpy().lerp(Items.metaglass.color, 0.3f);
     }
 
-    public void composeIcon() {
+    @Override
+    public void loadIcon() {
         TextureRegion icon = BottledIcon.genIconFor(liquid, R.Icon.gen(containerType));
         fullIcon = icon;
         uiIcon = icon;

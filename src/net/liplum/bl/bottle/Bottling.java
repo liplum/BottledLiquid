@@ -21,7 +21,7 @@ public class Bottling {
                 BottledLiquid bottled = new BottledLiquid(liquid);
                 setupProperties(bottled, liquid);
                 if (!Vars.headless)
-                    bottled.composeIcon();
+                    bottled.loadIcon();
                 liquid2Bottled.put(liquid, bottled);
             }
         }
