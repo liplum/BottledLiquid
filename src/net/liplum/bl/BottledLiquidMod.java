@@ -13,12 +13,12 @@ public class BottledLiquidMod extends Mod {
 
     @Override
     public void init() {
-        Bottling.bottlingAllLiquid();
     }
 
     @Override
     public void loadContent() {
         self = Vars.mods.getMod(Meta.ModId);
+        Bottling.bottlingAllLiquid();
         Blocks.load();
     }
 }

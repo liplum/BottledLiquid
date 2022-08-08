@@ -4,7 +4,6 @@ import arc.math.Mathf;
 import arc.struct.ObjectMap;
 import mindustry.Vars;
 import mindustry.type.Liquid;
-import net.liplum.bl.BottledLiquidMod;
 
 import static java.lang.Math.max;
 
@@ -15,17 +14,13 @@ public class Bottling {
      * Bottle all liquid except for the hidden.
      */
     public static void bottlingAllLiquid() {
-        Vars.content.setCurrentMod(BottledLiquidMod.self);
         for (Liquid liquid : Vars.content.liquids()) {
-            if (!liquid.isHidden()) {
+            if (liquid.minfo.mod == null && !liquid.isHidden()) {
                 BottledLiquid bottled = new BottledLiquid(liquid);
                 setupProperties(bottled, liquid);
-                if (!Vars.headless)
-                    bottled.loadIcon();
                 liquid2Bottled.put(liquid, bottled);
             }
         }
-        Vars.content.setCurrentMod(null);
     }
 
     public static void setupProperties(BottledLiquid b, Liquid l) {
